@@ -1,59 +1,76 @@
-# DesignSystem
+# @vihribeiro/ui — Design System Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.8.
+Biblioteca de componentes **Angular** standalone, tipados e acessíveis, com tema
+claro/escuro, além de um app de documentação (showcase) que demonstra cada componente.
 
-## Development server
+Projeto de portfólio focado no diferencial "bibliotecas de componentes / design systems".
 
-To start a local development server, run:
+## Estrutura (workspace Angular)
 
-```bash
-ng serve
+```
+projects/
+├── ui/         # a biblioteca publicável (@vihribeiro/ui), build via ng-packagr
+│   └── src/lib/
+│       ├── styles/theme.css   # design tokens (claro/escuro)
+│       ├── button/  badge/  spinner/  avatar/  card/
+│       ├── alert/   input/  switch/   modal/   toast/
+│       └── public-api.ts      # superfície pública
+└── showcase/   # app de documentação que consome a biblioteca
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Componentes
 
-## Code scaffolding
+| Componente            | Destaques                                                    |
+| --------------------- | ------------------------------------------------------------ |
+| `ui-button`           | variantes (primary/secondary/ghost/danger), tamanhos, loading |
+| `ui-badge`            | 6 tons × 3 variantes (soft/solid/outline)                     |
+| `ui-spinner`          | tamanho e espessura configuráveis                            |
+| `ui-avatar`           | iniciais automáticas ou imagem                               |
+| `ui-card`             | projeção de cabeçalho, corpo e rodapé                        |
+| `ui-alert`            | 4 tons, dispensável, ícones                                  |
+| `ui-input`            | `ControlValueAccessor`, rótulo/dica/erro, prefixo/sufixo     |
+| `ui-switch`           | `ControlValueAccessor`                                       |
+| `ui-modal`            | overlay, tamanhos, projeção de rodapé                        |
+| `ui-toast`            | `UiToastService` + `UiToastContainer` (auto-dismiss)         |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Design tokens
 
-```bash
-ng generate component component-name
+Todos os componentes usam variáveis CSS `--ui-*`. O tema escuro é ativado por
+`data-theme="dark"` no `<html>` — nenhum componente precisa saber do tema.
+
+```css
+@import '@vihribeiro/ui/styles/theme.css';
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Como rodar
 
 ```bash
-ng generate --help
+npm install
+
+# app de documentação (http://localhost:4200)
+npm start
+
+# build da biblioteca
+npm run build:lib
+
+# testes
+npm run test:lib
+npm run test:showcase
 ```
 
-## Building
+> Observação: o `tsconfig` mapeia `ui` para o **código-fonte** da biblioteca, então o
+> showcase compila sem exigir build prévio. Para consumir como pacote, rode
+> `npm run build:lib` e importe de `@vihribeiro/ui`.
 
-To build the project run:
+## Testes
 
-```bash
-ng build
-```
+Vitest, com cobertura de exemplo:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- `UiButton`: renderização, variante e estado de loading.
+- `UiBadge`: tom e variante.
+- `App` do showcase: bootstrap.
 
-## Running unit tests
+## Autor
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Vinícius Santos Ribeiro** — Desenvolvedor Frontend
+[Portfólio](https://viniciusribeiro.dev.br) · [GitHub](https://github.com/vihribeiro)

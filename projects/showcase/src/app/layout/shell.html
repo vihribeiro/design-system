@@ -1,0 +1,61 @@
+<div class="shell" [class.shell--open]="menuOpen()">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand__logo">ui</span>
+      <div class="brand__text">
+        <strong>&#64;vihribeiro/ui</strong>
+        <span>Design System</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      @for (group of nav; track group.title) {
+        <div class="nav__group">
+          <span class="nav__group-title">{{ group.title }}</span>
+          @for (item of group.items; track item.route) {
+            <a
+              class="nav__link"
+              [routerLink]="item.route"
+              routerLinkActive="is-active"
+              [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+              (click)="closeMenu()"
+            >
+              {{ item.label }}
+            </a>
+          }
+        </div>
+      }
+    </nav>
+
+    <div class="sidebar__footer">
+      <span>Angular 22 · Standalone</span>
+      <span>v0.1.0</span>
+    </div>
+  </aside>
+
+  <div class="backdrop" (click)="closeMenu()"></div>
+
+  <div class="main">
+    <header class="topbar">
+      <button type="button" class="menu-btn" aria-label="Abrir menu" (click)="toggleMenu()">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M3 12h18M3 6h18M3 18h18" />
+        </svg>
+      </button>
+
+      <span class="topbar__title">Biblioteca de componentes</span>
+
+      <ui-button variant="secondary" size="sm" (click)="theme.toggle()">
+        @if (theme.theme() === 'dark') {
+          Tema claro
+        } @else {
+          Tema escuro
+        }
+      </ui-button>
+    </header>
+
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

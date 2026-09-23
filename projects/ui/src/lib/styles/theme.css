@@ -1,0 +1,70 @@
+:root {
+  --ui-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --ui-color-primary: #0a8f5b;
+  --ui-color-primary-hover: #076b44;
+  --ui-color-primary-contrast: #ffffff;
+  --ui-color-primary-soft: #e4f5ee;
+
+  --ui-color-success: #0a8f5b;
+  --ui-color-success-soft: #e4f5ee;
+  --ui-color-warning: #b54708;
+  --ui-color-warning-soft: #fdf1e3;
+  --ui-color-danger: #d92d20;
+  --ui-color-danger-soft: #fdeceb;
+  --ui-color-info: #175cd3;
+  --ui-color-info-soft: #e8f0fe;
+  --ui-color-neutral: #475467;
+  --ui-color-neutral-soft: #f0f3f9;
+
+  --ui-bg: #ffffff;
+  --ui-bg-subtle: #f5f7fb;
+  --ui-surface: #ffffff;
+  --ui-surface-2: #f0f3f9;
+  --ui-border: #e3e8f0;
+  --ui-text: #1b2430;
+  --ui-text-muted: #667085;
+  --ui-overlay: rgba(16, 24, 40, 0.55);
+
+  --ui-radius-sm: 6px;
+  --ui-radius: 10px;
+  --ui-radius-lg: 16px;
+  --ui-radius-full: 999px;
+
+  --ui-shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --ui-shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.1);
+  --ui-shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.16);
+
+  --ui-transition: 0.15s ease;
+}
+
+[data-theme='dark'] {
+  --ui-color-primary: #22c07d;
+  --ui-color-primary-hover: #1aa468;
+  --ui-color-primary-contrast: #06281b;
+  --ui-color-primary-soft: #103526;
+
+  --ui-color-success: #22c07d;
+  --ui-color-success-soft: #103526;
+  --ui-color-warning: #f5a524;
+  --ui-color-warning-soft: #3a2a10;
+  --ui-color-danger: #f46b5d;
+  --ui-color-danger-soft: #3a1714;
+  --ui-color-info: #5b9bff;
+  --ui-color-info-soft: #142338;
+  --ui-color-neutral: #c0c8d6;
+  --ui-color-neutral-soft: #1e2733;
+
+  --ui-bg: #0d1420;
+  --ui-bg-subtle: #0a0f18;
+  --ui-surface: #141d2b;
+  --ui-surface-2: #1b2636;
+  --ui-border: #26313f;
+  --ui-text: #e8edf5;
+  --ui-text-muted: #94a1b5;
+  --ui-overlay: rgba(3, 7, 14, 0.7);
+
+  --ui-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --ui-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --ui-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
