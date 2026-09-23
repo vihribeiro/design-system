@@ -2,57 +2,100 @@
   display: block;
 }
 
-.shell {
-  display: grid;
-  grid-template-columns: 260px 1fr;
+.app {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  padding: 1.25rem 1rem;
-  background: var(--ui-bg-subtle);
-  border-right: 1px solid var(--ui-border);
+/* ============ Topbar ============ */
+.topbar {
   position: sticky;
   top: 0;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-.brand {
+  z-index: 30;
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  padding: 0 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: color-mix(in srgb, var(--ui-surface) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--ui-border);
 }
 
-.brand__logo {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: var(--ui-radius);
-  background: var(--ui-color-primary);
-  color: var(--ui-color-primary-contrast);
+.brand {
+  font-size: 0.98rem;
   font-weight: 800;
-  text-transform: lowercase;
+  letter-spacing: -0.02em;
+  color: var(--ui-text);
+  text-decoration: none;
 }
 
-.brand__text {
+.version {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ui-text-muted);
+  background: var(--ui-surface-2);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.topbar__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ghost-btn {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid var(--ui-border);
+  border-radius: 999px;
+  padding: 0.38rem 0.8rem;
+  cursor: pointer;
+  transition:
+    background var(--ui-transition),
+    color var(--ui-transition);
+}
+
+.ghost-btn:hover {
+  background: var(--ui-surface-2);
+  color: var(--ui-text);
+}
+
+.menu-btn {
+  display: none;
+  border: none;
+  background: transparent;
+  color: var(--ui-text);
+  cursor: pointer;
+  padding: 0.2rem;
+}
+
+/* ============ Corpo ============ */
+.body {
+  display: grid;
+  grid-template-columns: 236px minmax(0, 1fr) 210px;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  flex: 1;
+}
+
+.sidenav {
   display: flex;
   flex-direction: column;
-  line-height: 1.25;
-}
-
-.brand__text strong {
-  font-size: 0.9rem;
-}
-
-.brand__text span {
-  font-size: 0.72rem;
-  color: var(--ui-text-muted);
+  gap: 1rem;
+  padding: 1.5rem 1rem;
+  border-right: 1px solid var(--ui-border);
+  position: sticky;
+  top: 55px;
+  height: calc(100vh - 55px);
+  overflow-y: auto;
 }
 
 .nav {
@@ -65,26 +108,28 @@
 .nav__group {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .nav__group-title {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--ui-text-muted);
-  padding: 0 0.5rem 0.4rem;
+  padding: 0 0.55rem 0.4rem;
 }
 
 .nav__link {
-  padding: 0.5rem 0.6rem;
+  padding: 0.45rem 0.55rem;
   border-radius: var(--ui-radius-sm);
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--ui-text-muted);
   text-decoration: none;
-  transition: background var(--ui-transition), color var(--ui-transition);
+  transition:
+    background var(--ui-transition),
+    color var(--ui-transition);
 }
 
 .nav__link:hover {
@@ -95,92 +140,100 @@
 .nav__link.is-active {
   background: var(--ui-color-primary-soft);
   color: var(--ui-color-primary-hover);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.sidebar__footer {
-  display: flex;
-  justify-content: space-between;
+.sidenav__footer {
   font-size: 0.72rem;
   color: var(--ui-text-muted);
-  padding: 0.75rem 0.5rem 0;
+  padding: 0.75rem 0.55rem 0;
   border-top: 1px solid var(--ui-border);
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.topbar {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.85rem 1.5rem;
-  background: var(--ui-surface);
-  border-bottom: 1px solid var(--ui-border);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.topbar__title {
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-right: auto;
-}
-
-.menu-btn {
-  display: none;
-  border: none;
-  background: transparent;
-  color: var(--ui-text);
-  cursor: pointer;
-  padding: 0.25rem;
-}
-
 .content {
-  padding: 2rem;
-  flex: 1;
-  max-width: 1080px;
+  min-width: 0;
   width: 100%;
+  max-width: 860px;
+  padding: 2rem 2.5rem 4rem;
+}
+
+/* ============ Índice ============ */
+.toc {
+  position: sticky;
+  top: 55px;
+  height: calc(100vh - 55px);
+  overflow-y: auto;
+  padding: 1.75rem 1rem;
+  border-left: 1px solid var(--ui-border);
+}
+
+.toc__title {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ui-text-muted);
+  margin-bottom: 0.6rem;
+}
+
+.toc a {
+  display: block;
+  padding: 0.28rem 0;
+  font-size: 0.82rem;
+  color: var(--ui-text-muted);
+  text-decoration: none;
+  transition: color var(--ui-transition);
+}
+
+.toc a:hover {
+  color: var(--ui-text);
 }
 
 .backdrop {
   display: none;
 }
 
+/* ============ Responsivo ============ */
+@media (max-width: 1280px) {
+  .body {
+    grid-template-columns: 236px minmax(0, 1fr);
+  }
+  .toc {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
-  .shell {
+  .body {
     grid-template-columns: 1fr;
   }
-
-  .sidebar {
+  .sidenav {
     position: fixed;
     z-index: 40;
-    width: 260px;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: var(--ui-bg);
     transform: translateX(-100%);
     transition: transform 0.2s ease;
+    padding-top: 4.5rem;
   }
-
-  .shell--open .sidebar {
+  .app--open .sidenav {
     transform: translateX(0);
   }
-
-  .shell--open .backdrop {
+  .app--open .backdrop {
     display: block;
     position: fixed;
     inset: 0;
     background: var(--ui-overlay);
-    z-index: 30;
+    z-index: 35;
   }
-
   .menu-btn {
     display: inline-flex;
   }
-
   .content {
-    padding: 1.25rem;
+    padding: 1.5rem 1.25rem 3rem;
   }
 }

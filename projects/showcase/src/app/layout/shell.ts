@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { UiButton } from 'ui';
 import { ThemeService } from '../core/theme.service';
+import { TocService } from '../core/toc.service';
 
 interface NavItem {
   label: string;
@@ -15,12 +15,13 @@ interface NavGroup {
 
 @Component({
   selector: 'docs-shell',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, UiButton],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './shell.html',
   styleUrl: './shell.css',
 })
 export class Shell {
   readonly theme = inject(ThemeService);
+  readonly toc = inject(TocService);
   readonly menuOpen = signal(false);
 
   readonly nav: NavGroup[] = [

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;
@@ -15,8 +19,9 @@ body {
   background: var(--ui-bg);
   color: var(--ui-text);
   font-size: 15px;
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   transition:
     background 0.2s ease,
     color 0.2s ease;
@@ -26,6 +31,21 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+::selection {
+  background: var(--ui-color-primary);
+  color: var(--ui-color-primary-contrast);
+}
+
+code {
+  font-family: 'JetBrains Mono', 'SFMono-Regular', ui-monospace, Menlo, Consolas, monospace;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
